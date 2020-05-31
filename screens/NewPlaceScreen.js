@@ -16,15 +16,21 @@ import MyButton from "../components/MyButton";
 
 const NewPlaceScreen = (props) => {
   const [title, setTitle] = useState("");
+  const [selectedImage, setSelectedImage] = useState();
   const dispatch = useDispatch();
 
   const titleChangeHandler = (text) => {
     setTitle(text);
   };
 
+  const imageTakenHandler = (imagePath) => {
+    setSelectedImage(imagePath);
+  };
+
   const savePlaceHandler = () => {
-    dispatch(placesActions.addPlace(title));
+    dispatch(placesActions.addPlace(title, selectedImage));
     props.navigation.goBack();
+
   };
 
   return (
@@ -36,7 +42,7 @@ const NewPlaceScreen = (props) => {
           onChangeText={titleChangeHandler}
           value={title}
         />
-        <ImagePicker />
+        <ImagePicker onImageTaken={imageTakenHandler} />
         <View style={styles.buttonContainer}>
           <MyButton onPress={savePlaceHandler}>SAVE PLACE</MyButton>
         </View>

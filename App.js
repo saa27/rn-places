@@ -1,12 +1,22 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { AppLoading } from "expo";
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import * as Font from "expo-font";
 import ReduxThunk from "redux-thunk";
+import { init } from "./helpers/db";
 
 import PlacesNavigator from "./navigation/PlacesNavigator";
 import placesReducer from "./store/reducers/places-reducer";
+
+init()
+  .then(() => {
+    console.log("Initialized database.");
+  })
+  .catch((err) => {
+    console.log("Initializing db failed.");
+    console.log(err);
+  });
 
 const rootReducer = combineReducers({
   places: placesReducer,
@@ -37,6 +47,6 @@ export default function App() {
   return (
     <Provider store={store}>
       <PlacesNavigator />
-    </Provider>//so that every screen in Navigator has access to store
+    </Provider> //so that every screen in Navigator has access to store
   );
 }

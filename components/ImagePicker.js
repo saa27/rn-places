@@ -15,6 +15,7 @@ const ImagePicker = (props) => {
       quality: 0.5,
     });
     setPickedImage(image.uri);
+    props.onImageTaken(image.uri);
   };
 
   return (
