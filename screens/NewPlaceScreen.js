@@ -11,6 +11,8 @@ import { useDispatch } from "react-redux";
 
 import Colors from "../constants/Colors";
 import * as placesActions from "../store/actions/places-action";
+import ImagePicker from "../components/ImagePicker";
+import MyButton from "../components/MyButton";
 
 const NewPlaceScreen = (props) => {
   const [title, setTitle] = useState("");
@@ -34,11 +36,10 @@ const NewPlaceScreen = (props) => {
           onChangeText={titleChangeHandler}
           value={title}
         />
-        <Button
-          title="Save Place"
-          color={Colors.primary}
-          onPress={savePlaceHandler}
-        />
+        <ImagePicker />
+        <View style={styles.buttonContainer}>
+          <MyButton onPress={savePlaceHandler}>SAVE PLACE</MyButton>
+        </View>
       </View>
     </ScrollView>
   );
@@ -62,6 +63,11 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingVertical: 4,
     paddingHorizontal: 2,
+  },
+  buttonContainer: {
+    marginTop: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

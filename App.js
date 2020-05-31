@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { AppLoading } from "expo";
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";

@@ -12,7 +12,7 @@ const PlacesListScreen = (props) => {
   return (
     <FlatList
       data={places}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id.toString()} // it needs string
       renderItem={(itemData) => (
         <PlaceItem
           image={null}

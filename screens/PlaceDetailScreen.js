@@ -9,9 +9,9 @@ const PlaceDetailScreen = (props) => {
   );
 };
 
-PlacesListScreen.navigationOptions = (navData) => {
+PlaceDetailScreen.navigationOptions = (navData) => {
   return {
-    headerTitle: navData.navigationOptions.getParam("placeTitle"),
+    headerTitle: navData.navigation.getParam("placeTitle"),
   };
 };
 
