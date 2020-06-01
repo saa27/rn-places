@@ -4,14 +4,14 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import * as Font from "expo-font";
 import ReduxThunk from "redux-thunk";
-import { init } from "./helpers/db";
 
 import PlacesNavigator from "./navigation/PlacesNavigator";
 import placesReducer from "./store/reducers/places-reducer";
+import { init } from "./helpers/db";
 
 init()
   .then(() => {
-    console.log("Initialized database.");
+    console.log("Initialized database");
   })
   .catch((err) => {
     console.log("Initializing db failed.");
